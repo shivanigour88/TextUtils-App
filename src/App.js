@@ -56,7 +56,7 @@ function App() {
    <div className="container">
         {/*<Routes>*/}
           {/*<Route exact path="/about" element={<About />} />*/}
-          <TextForm Heading="Enter the text to analyze" mode={mode} showAlert={showAlert} />
+          <TextForm Heading="Try TextUtils - Covert Uppercase , Convert Lowercase, Remove extra spaces " mode={mode} showAlert={showAlert}/>
         {/*</Routes>*/}
     </div>
   {/*</Router>*/}
