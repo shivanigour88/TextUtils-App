@@ -1,14 +1,14 @@
 import './App.css';
 import  Navbar from './componenets/Navbar.js';
-//import  About from './componenets/About.js';
+import  About from './componenets/About.js';
 import  TextForm from './componenets/TextForm.js';
 import React, { useState } from 'react';
 import Alert from './componenets/Alert.js';
-/*import {
+import {
   BrowserRouter as Router,
   Routes,
   Route,
-} from "react-router-dom";*/
+} from "react-router-dom";
 
 function App() {
 
@@ -23,8 +23,17 @@ function App() {
       setAlert(null);
     }, 1500);
   }
-  const ToggleMode = () =>{
-    
+  const RemoveBodyClasses=()=>{
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-warning')
+  }
+  const ToggleMode = (cls) =>{
+    RemoveBodyClasses();
+    document.body.classList.add('bg-'+cls)
     if(mode === 'light')
     {
       setMode('dark');
@@ -50,16 +59,16 @@ function App() {
   }
   return (
   <>   
-  {/*<Router>*/}
+  <Router>
   <Navbar title = "TestUtils" TextAbout = "About" mode = {mode} ToggleMode = {ToggleMode}/>
    <Alert alert = {alert}/>
    <div className="container">
-        {/*<Routes>*/}
-          {/*<Route exact path="/about" element={<About />} />*/}
-          <TextForm Heading="Try TextUtils - Covert Uppercase , Convert Lowercase, Remove extra spaces " mode={mode} showAlert={showAlert}/>
-        {/*</Routes>*/}
+        <Routes>
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/" element={<TextForm Heading="Try TextUtils - Convert Uppercase, Convert Lowercase, Remove extra spaces" mode={mode} showAlert={showAlert} />} />
+      </Routes>
     </div>
-  {/*</Router>*/}
+  </Router>
   </>
   );
 }
